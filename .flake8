@@ -1,0 +1,11 @@
+[flake8]
+exclude =
+    .env
+    .venv/
+    __pycache__
+    apps.py
+    manage.py
+    migrations
+    routing.py
+    settings.py
+    urls.py
