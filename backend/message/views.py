@@ -10,6 +10,7 @@ from core.models import Message
 from .serializers import MessageSerializer
 
 
+@extend_schema(tags=["Messages"])
 class MessageViewSet(viewsets.ModelViewSet):
     """
     A viewset for managing messages.
@@ -37,6 +38,7 @@ class MarkMessageAsReadView(APIView):
     """Marks a message as read by the receiver"""
 
     permission_classes = (IsAuthenticated,)
+    serializer_class = MessageSerializer
 
     @extend_schema(
         responses={
@@ -55,6 +57,7 @@ class MarkMessageAsReadView(APIView):
                 status_codes=[404],
             ),
         ],
+        tags=["Messages"],
     )
     def patch(self, request, message_id):
         try:

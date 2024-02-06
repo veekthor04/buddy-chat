@@ -16,7 +16,7 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         if User.objects.filter(is_superuser=True).count() == 0:
             print("Creating account for %s (%s)" % (username, email))
-            admin = User.objects.create_superuser(
+            admin = User.objects.create_superuser(  # type: ignore
                 email=email, username=username, password=password
             )
             admin.is_active = True

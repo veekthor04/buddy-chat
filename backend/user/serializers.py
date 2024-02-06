@@ -35,6 +35,7 @@ class UserSerializer(serializers.ModelSerializer):
         """Validates password using the AUTH_PASSWORD_VALIDATORS"""
         user = self.context["request"].user
         validate_password(password=value, user=user)
+        return value
 
     def create(self, validated_data):
         """Creates a new user using the create_user"""
